@@ -1,0 +1,11 @@
+#colonneDebut, #colonneMilieu, #colonneFin {
+	float:left;
+}
+
+.clear {
+	clear:both;
+}
+
+.clear hr {
+	display:none;
+}
