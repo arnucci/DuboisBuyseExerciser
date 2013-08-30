@@ -11,7 +11,7 @@ class IndexController
     {
         $content = $this->setContent();
 
-        $indexView = new IndexView($content);
+        $indexView = new IndexView($content, $this->_colonneDebut, $this->_colonneMilieu, $this->_colonneFin);
         $indexView->display();
     }
 
@@ -153,9 +153,9 @@ class IndexController
 
         if (!empty($_POST['lettre'])) {
 
-            $colonneDebut  = array();
-            $colonneMilieu = array();
-            $colonneFin    = array();
+            $this->_colonneDebut  = array();
+            $this->_colonneMilieu = array();
+            $this->_colonneFin    = array();
 
             $results = array();
             $cleanLettre = htmlspecialchars($_POST['lettre'], ENT_COMPAT);
@@ -171,7 +171,7 @@ class IndexController
 			
                         if (in_array($matches[2], $_POST['classe'])) {
 			
-                            $colonneDebut[] = $matches[1];
+                            $this->_colonneDebut[] = $matches[1];
                         }
                     }
                 } 
@@ -183,7 +183,7 @@ class IndexController
 
                         if (in_array($matches[2], $_POST['classe'])) {
 				
-                            $colonneMilieu[] = $matches[1];
+                            $this->_colonneMilieu[] = $matches[1];
                         }
                     }
                 }
@@ -195,7 +195,7 @@ class IndexController
 			
                         if (in_array($matches[2], $_POST['classe'])) {
 				
-                            $colonneFin[] = $matches[1];
+                            $this->_colonneFin[] = $matches[1];
                         }
                     }
                 }
