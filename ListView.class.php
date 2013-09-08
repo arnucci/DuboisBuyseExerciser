@@ -7,7 +7,7 @@ if (!empty($this->_colonneDebut) || !empty($this->_colonneMilieu) || !empty($thi
 
         $content .= '<div id="colonneDebut">';
 
-        $content .= '<h3>Mots commençant par "'.$cleanLettre.'"</h3>';
+        $content .= '<h3>Mots commençant par "'.$this->_cleanLettre.'"</h3>';
 
         foreach ($this->_colonneDebut as $mot) {
 
@@ -21,7 +21,7 @@ if (!empty($this->_colonneDebut) || !empty($this->_colonneMilieu) || !empty($thi
 
         $content .= '<div id="colonneMilieu">';
 
-        $content .= '<h3>Mots contenant "'.$cleanLettre.'"</h3>';
+        $content .= '<h3>Mots contenant "'.$this->_cleanLettre.'"</h3>';
 
         foreach ($this->_colonneMilieu as $mot) {
 
@@ -31,11 +31,11 @@ if (!empty($this->_colonneDebut) || !empty($this->_colonneMilieu) || !empty($thi
         $content .= '</div>';
     }
 
-    if (!empty($colonneFin)) {
+    if (!empty($this->_colonneFin)) {
 
         $content .= '<div id="colonneFin">';
 
-        $content .= '<h3>Mots finissant par "'.$cleanLettre.'"</h3>';
+        $content .= '<h3>Mots finissant par "'.$this->_cleanLettre.'"</h3>';
 
         foreach ($this->_colonneFin as $mot) {
 
@@ -52,7 +52,7 @@ if (!empty($this->_colonneDebut) || !empty($this->_colonneMilieu) || !empty($thi
 
     $content .=	'<div class="clear"><hr /></div>';
     $content .= '<p>';
-    $content .= '<input type="hidden" name="lettre" value="'.$cleanLettre.'" />';
+    $content .= '<input type="hidden" name="lettre" value="'.$this->_cleanLettre.'" />';
     $content .=	'<input type="submit" name="submit" value="Editer">';
     $content .=	'</p>';
  }

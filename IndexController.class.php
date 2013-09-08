@@ -2,6 +2,14 @@
 
 class IndexController
 {
+    private $_colonneDebut = array();
+
+    private $_colonneMilieu = array();
+
+    private $_colonneFin = array();
+
+    private $_cleanLettre;
+
     public function __construct()
     {
     }
@@ -20,12 +28,8 @@ class IndexController
 
     private function setContent()
     {
-        $this->_colonneDebut  = array();
-        $this->_colonneMilieu = array();
-        $this->_colonneFin    = array();
-
         $results = array();
-        $cleanLettre = htmlspecialchars($_POST['lettre'], ENT_COMPAT);
+        $this->_cleanLettre = htmlspecialchars($_POST['lettre'], ENT_COMPAT);
 
         $results = file('words.txt');
 
@@ -33,7 +37,7 @@ class IndexController
 
             if (in_array('debut', $_POST['place'])) {
 	
-                $pattern = '#^('.$cleanLettre.'[a-zéèàêûîôïç-]+) \| ([a-zA-Z0-9è]+)#';
+                $pattern = '#^('.$this->_cleanLettre.'[a-zéèàêûîôïç-]+) \| ([a-zA-Z0-9è]+)#';
                 if (preg_match($pattern, $word, $matches)) {
 			
                     if (in_array($matches[2], $_POST['classe'])) {
@@ -45,7 +49,7 @@ class IndexController
 		
             if (in_array('milieu', $_POST['place'])) {
 
-                $pattern = '#^([a-zéèàêûîôïç-]+'.$cleanLettre.'[a-zéèàêûîôïç-]+) \| ([a-zA-Z0-9è]+)#';
+                $pattern = '#^([a-zéèàêûîôïç-]+'.$this->_cleanLettre.'[a-zéèàêûîôïç-]+) \| ([a-zA-Z0-9è]+)#';
                 if (preg_match($pattern, $word, $matches)) {
 
                     if (in_array($matches[2], $_POST['classe'])) {
@@ -57,7 +61,7 @@ class IndexController
 		
             if (in_array('fin', $_POST['place'])) {
 
-                $pattern = '#^([a-zéèàêûîôïç-]+'.$cleanLettre.') \| ([a-zA-Z0-9è]+)$#';
+                $pattern = '#^([a-zéèàêûîôïç-]+'.$this->_cleanLettre.') \| ([a-zA-Z0-9è]+)#';
                 if (preg_match($pattern, $word, $matches)) {
 			
                     if (in_array($matches[2], $_POST['classe'])) {
@@ -68,7 +72,6 @@ class IndexController
             }
         }
     }
-
 
 
     public function request()
