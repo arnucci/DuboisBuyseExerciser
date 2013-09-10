@@ -45,9 +45,10 @@ if (!empty($this->_colonneDebut) || !empty($this->_colonneMilieu) || !empty($thi
         $content .= '</div>';
     }
 
+    $content .=	'<div class="clear"><hr /></div>';
 	$content .=	'<p>';
-    $content .=	'<input type="checkbox" name="editiontype[]" value="pdf" id="pdf" /><label for="pdf">PDF</label>';
-    $content .=	'<input type="checkbox" name="editiontype[]" value="excel" id="excel" /><label for="excel">Excel</label>';
+    $content .=	'<input type="radio" name="editiontype" value="pdf" id="pdf" /><label for="pdf">PDF</label>';
+    $content .=	'<input type="radio" name="editiontype" value="excel" id="excel" /><label for="excel">Excel</label>';
     $content .=	'</p>';
 
     $content .=	'<div class="clear"><hr /></div>';
