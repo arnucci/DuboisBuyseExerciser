@@ -126,7 +126,7 @@ class EditController
                     $csv[] = $fin;
                 }
 		
-                $fp = fopen('file.csv', 'w');
+                $fp = fopen('tmp/file.csv', 'w');
 
                 foreach ($csv as $fields) {
 
@@ -135,7 +135,7 @@ class EditController
 
                 fclose($fp);
 		
-                $csvname = 'file.csv';
+                $csvname = 'tmp/file.csv';
 
                 if(file_exists($csvname)) {
 		
