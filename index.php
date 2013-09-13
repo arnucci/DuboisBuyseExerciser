@@ -1,5 +1,6 @@
 <?php
- require_once 'IndexController.class.php';
+require_once 'IndexController.class.php';
+require_once 'EditController.class.php';
 
 if (isset($_GET['action'])) {
 

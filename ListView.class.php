@@ -1,7 +1,7 @@
 <?php
 if (!empty($this->_colonneDebut) || !empty($this->_colonneMilieu) || !empty($this->_colonneFin)) {
 
-    $content .= '<form action="edition.php" method="post">';
+    $content .= '<form action="index.php?action=edit" method="post">';
 
     if (!empty($this->_colonneDebut)) {
 
