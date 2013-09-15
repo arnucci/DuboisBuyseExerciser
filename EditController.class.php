@@ -73,8 +73,8 @@ class EditController
                 $dompdf->render();
  
                 $dompdf->stream("hello.pdf");
-            }
-            else if ($_POST['editiontype'] === 'excel') {
+
+            } else if ($_POST['editiontype'] === 'excel') {
             
                 
                 $csv = array();
