@@ -498,7 +498,7 @@ merle | CE2
 miel | CE2
 ministre | CE2
 minuit | CE2
-misérable | CE2
+misérable | CE
 moudre | CE2
 mouvoir | CE2
 multitude | CE2
@@ -3695,7 +3695,7 @@ inconvénient | 4ème
 malette | 4ème
 recours | 4ème
 solliciter | 4ème
-anticiper | 3ème
+anticiper | 3èm
 bruyamment | 3ème
 clin d'oeil | 3ème
 dégât | 3ème
