@@ -696,7 +696,7 @@ pointe | CE2
 politesse | CE2
 prairie | CE2
 pratiquer | CE2
-presque  | CE2
+presque | CE2
 prévoir | CE2
 prière | CE2
 production | CE2
