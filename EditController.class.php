@@ -4,11 +4,6 @@ class EditController
 {
     public function viewsManagement()
     {
-      
-
-       
-
-        // require_once 'layout.php';
     }
 
     private function setContent()
