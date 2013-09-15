@@ -76,7 +76,6 @@ class EditController
 
             } else if ($_POST['editiontype'] === 'excel') {
             
-                
                 $csv = array();
 	
                 if (!empty($_POST['debut'])) {
