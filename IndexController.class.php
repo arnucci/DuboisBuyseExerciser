@@ -76,7 +76,7 @@ class IndexController
 
     public function request()
     {
-        if (!empty($_POST['lettre'])) {
+        if (!empty($_POST['lettre']) && !empty($_POST['place']) && !empty($_POST['classe'])) {
 
             $this->setContent();
         }
