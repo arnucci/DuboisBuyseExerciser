@@ -4,11 +4,6 @@ class EditController
 {
     public function viewsManagement()
     {
-      
-
-       
-
-        // require_once 'layout.php';
     }
 
     private function setContent()
@@ -78,10 +73,9 @@ class EditController
                 $dompdf->render();
  
                 $dompdf->stream("hello.pdf");
-            }
-            else if ($_POST['editiontype'] === 'excel') {
+
+            } else if ($_POST['editiontype'] === 'excel') {
             
-                
                 $csv = array();
 	
                 if (!empty($_POST['debut'])) {
