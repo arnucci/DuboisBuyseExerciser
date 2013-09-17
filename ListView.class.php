@@ -56,4 +56,8 @@ if (!empty($this->_colonneDebut) || !empty($this->_colonneMilieu) || !empty($thi
     $content .= '<input type="hidden" name="lettre" value="'.$this->_cleanLettre.'" />';
     $content .=	'<input type="submit" name="submit" value="Editer">';
     $content .=	'</p>';
- }
+
+ } else {
+
+    $content .= '<p>Il n\'y a aucun mot correspondant à vos critères de recherche</p>';
+}
