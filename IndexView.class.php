@@ -134,3 +134,5 @@ $content .= '<input type="submit" name="submit" value="Rechercher" />';
 $content .= '</p>';
 
 $content .= '</form>';
+
+$script = '<script src="js/select.js" type="text/javascript"></script>';
