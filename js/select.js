@@ -1,4 +1,9 @@
 $('#select').click(function() {
 
-    alert('coucou');
+    placecheckbox = $('input:checkbox[name="place[]"]');
+
+    placecheckbox.each(function() {
+
+        $(this).attr('checked', 'checked');
+    });
 });
