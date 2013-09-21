@@ -10,7 +10,7 @@ if (isset($_POST['lettre']))
 $content .= ' />';
 $content .= '</p>';
 
-$content .= '<p><a href="#" id="select">Tout sélectionner</a> - <a href="#" id="unselect">Tout désélectionner</a></p>';
+$content .= '<p><a href="#" id="select">Tout sélectionner</a> - <a href="#" id="unselect">Tous déselectionner</a></p>';
 
 $content .= '<p>';
 $content .= '<input type="checkbox" name="place[]" value="debut" id="debut" ';
