@@ -37,7 +37,7 @@ class IndexController
 
             if (in_array('debut', $_POST['place'])) {
 	
-                $pattern = '#^('.$this->_cleanLettre.'[a-zéèàêûîôïç-]+) \| ([a-zA-Z0-9è]+)#';
+                $pattern = '#^('.$this->_cleanLettre.'[a-z\ \'éèàêûîôïç\-]+) \| ([a-zA-Z0-9è]+)#';
                 if (preg_match($pattern, $word, $matches)) {
 			
                     if (in_array($matches[2], $_POST['classe'])) {
