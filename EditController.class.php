@@ -125,12 +125,11 @@ class EditController
         }
 
         $max = max($countDebut, $countMilieu, $countFin);
-        // var_dump($max);
-		// var_dump($csv);
+
         $fp = fopen('tmp/file.csv', 'w');
         $i = 0;
-        $arrayTest = array();
 
+        $arrayRows = array();
 
         while ($i <$max) {
 
@@ -138,7 +137,7 @@ class EditController
 
                 if (array_key_exists('debut', $csv)) {
 
-                    $arrayTest[$i][] = (array_key_exists($i, $csv['debut'])) ? $csv['debut'][$i] : "";
+                    $arrayRows[$i][] = (array_key_exists($i, $csv['debut'])) ? $csv['debut'][$i] : "";
                 }
             }
 
@@ -146,7 +145,7 @@ class EditController
 
                 if (array_key_exists('milieu', $csv)) {
 
-                    $arrayTest[$i][] = (array_key_exists($i, $csv['milieu'])) ? $csv['milieu'][$i] : "";
+                    $arrayRows[$i][] = (array_key_exists($i, $csv['milieu'])) ? $csv['milieu'][$i] : "";
                 }
             }
 
@@ -154,16 +153,14 @@ class EditController
 
                 if (array_key_exists('fin', $csv)) {
 
-                    $arrayTest[$i][] = (array_key_exists($i, $csv['fin'])) ? $csv['fin'][$i] : "";
+                    $arrayRows[$i][] = (array_key_exists($i, $csv['fin'])) ? $csv['fin'][$i] : "";
                 }
             }
 
             $i++;
         }
 
-        //        var_dump($arrayTest);
-
-        foreach ($arrayTest as $fields) {
+        foreach ($arrayRows as $fields) {
 
             fputcsv($fp, $fields);
         }
