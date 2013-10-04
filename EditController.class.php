@@ -188,7 +188,7 @@ class EditController
 	
         } else {
 			
-            echo 'Le fichier cvs n\'a pas pu être généré pour une raison inconnue !';
+            echo 'Le fichier csv n\'a pas pu être généré pour une raison inconnue !';
         }
     }
 
