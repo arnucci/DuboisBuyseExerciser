@@ -92,12 +92,9 @@ class EditController
         return $arrayRows;
     }
 
-    private function renderPdf()
-    {
-        require_once "dompdf/dompdf_config.inc.php";
 
-        $dompdf = new DOMPDF();
- 
+    private function createHtmlDoc()
+    {
         $html  = '<html>';
         $html .= '<head>';
         $html .= '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
@@ -150,6 +147,21 @@ class EditController
         $html .= '</table>';
         $html .= '</body>';
         $html .= '</html>';
+
+        return $html;
+    }
+
+    private function renderPdf()
+    {
+        $html = $this->createHtmlDoc();
+
+        require_once "dompdf/dompdf_config.inc.php";
+
+        
+
+        $dompdf = new DOMPDF();
+ 
+        
  
         $dompdf->load_html($html);
         $dompdf->render();
