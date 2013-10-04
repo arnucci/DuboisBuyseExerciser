@@ -76,7 +76,11 @@ class EditController
     private function renderExcel() {
             
         $csv = array();
-	
+
+        $countDebut  = 0;
+        $countMilieu = 0;
+        $countFin    = 0;
+
         if (!empty($_POST['debut'])) {
 
             $debut = array();
@@ -88,7 +92,8 @@ class EditController
                 $debut[] = $word;
             }
                     
-            $csv[] = $debut;
+            $csv['debut'] = $debut;
+            $countDebut = count($debut);
         }
 
         if (!empty($_POST['milieu'])) {
@@ -101,7 +106,8 @@ class EditController
 
                 $milieu[] = $word;
             }
-            $csv[] = $milieu;
+            $csv['milieu'] = $milieu;
+            $countMilieu = count($milieu);
         }
 
         if (!empty($_POST['fin'])) {
@@ -114,12 +120,50 @@ class EditController
 
                 $fin[] = $word;
             }
-            $csv[] = $fin;
+            $csv['fin'] = $fin;
+            $countFin = count($fin);
         }
-		
-        $fp = fopen('tmp/file.csv', 'w');
 
-        foreach ($csv as $fields) {
+        $max = max($countDebut, $countMilieu, $countFin);
+        // var_dump($max);
+		// var_dump($csv);
+        $fp = fopen('tmp/file.csv', 'w');
+        $i = 0;
+        $arrayTest = array();
+
+
+        while ($i <$max) {
+
+            if ($countDebut !== 0) {
+
+                if (array_key_exists('debut', $csv)) {
+
+                    $arrayTest[$i][] = (array_key_exists($i, $csv['debut'])) ? $csv['debut'][$i] : "";
+                }
+            }
+
+            if ($countMilieu !== 0) {
+
+                if (array_key_exists('milieu', $csv)) {
+
+                    $arrayTest[$i][] = (array_key_exists($i, $csv['milieu'])) ? $csv['milieu'][$i] : "";
+                }
+            }
+
+            if ($countFin !== 0) {
+
+                if (array_key_exists('fin', $csv)) {
+
+                    $arrayTest[$i][] = (array_key_exists($i, $csv['fin'])) ? $csv['fin'][$i] : "";
+                }
+            }
+
+            $i++;
+        }
+
+        //        var_dump($arrayTest);
+
+        foreach ($arrayTest as $fields) {
 
             fputcsv($fp, $fields);
         }
