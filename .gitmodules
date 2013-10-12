@@ -1,3 +1,3 @@
 [submodule "tcpdf"]
 	path = tcpdf
-	url = https://github.com/tcpdf-clone/tcpdf.git
+	url = git://github.com/tcpdf-clone/tcpdf.git
