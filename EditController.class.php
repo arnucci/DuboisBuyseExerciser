@@ -95,8 +95,6 @@ class EditController
 
     private function renderPdf()
     {
-        $data = $this->processData();
-
         require_once('tcpdf/tcpdf.php');
 
         // create new PDF document
@@ -144,15 +142,20 @@ class EditController
         $pdf->AddPage();
 
         // create columns content
-        $left_column = '<b>LEFT COLUMN</b>';
 
-        //  $left_column .= implode(' ', $data);
-        foreach ($data as $row) {
+	if (isset($_POST['debut'])) {
 
-            $left_column .= implode(' ', $row);
+	    $leftColumn = '<h1>Mots commençant par "'.$_POST['lettre'].'" </h1>';
+
+            $leftColumn .= implode('<br />', $_POST['debut']);
         }
 
-        $right_column = '<b>RIGHT COLUMN</b> lumn right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column right column';
+        if (isset($_POST['fin'])) {
+
+            $rightColumn = '<h1>Mot finissant par "'.$_POST['lettre'].'" </h1>';
+
+            $rightColumn .= implode('<br />', $_POST['fin']);
+        }
 
         // get current vertical position
         $y = $pdf->getY();
@@ -164,7 +167,7 @@ class EditController
         $pdf->SetTextColor(0, 63, 127);
 
         // write the first column
-        $pdf->writeHTMLCell(80, '', '', $y, $left_column, 1, 0, 1, true, 'J', true);
+        $pdf->writeHTMLCell(80, '', '', $y, $leftColumn, 1, 0, 1, true, 'J', true);
 
         // set color for background
         $pdf->SetFillColor(215, 235, 255);
@@ -173,7 +176,7 @@ class EditController
         $pdf->SetTextColor(127, 31, 0);
 
         // write the second column
-        $pdf->writeHTMLCell(80, '', '', '', $right_column, 1, 1, 1, true, 'J', true);
+        $pdf->writeHTMLCell(80, '', '', '', $rightColumn, 1, 1, 1, true, 'J', true);
 
         // reset pointer to the last page
         $pdf->lastPage();
