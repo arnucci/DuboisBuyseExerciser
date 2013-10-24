@@ -134,6 +134,13 @@ class EditController
             $leftColumn .= implode('<br />', $_POST['debut']);
         }
 
+        if (isset($_POST['milieu'])) {
+
+            $middleColumn = '<h1>Mots contenant "'.$_POST['lettre'].'" </h1>';
+
+            $middleColumn .= implode('<br />', $_POST['milieu']);
+        }
+
         if (isset($_POST['fin'])) {
 
             $rightColumn = '<h1>Mot finissant par "'.$_POST['lettre'].'" </h1>';
@@ -151,7 +158,7 @@ class EditController
         $pdf->SetTextColor(0, 0, 0);
 
         // write the first column
-        $pdf->writeHTMLCell(80, '', '', $y, $leftColumn, 1, 0, 1, true, 'J', true);
+        $pdf->writeHTMLCell(60, '', '', $y, $leftColumn, 0, 0, 1, true, 'J', true);
 
         // set color for background
         $pdf->SetFillColor(255, 255, 255);
@@ -159,8 +166,17 @@ class EditController
         // set color for text
         $pdf->SetTextColor(0, 0, 0);
 
+        // write the first column
+        $pdf->writeHTMLCell(60, '', '', '', $middleColumn, 0, 0, 1, true, 'J', true);
+        
+        // set color for background
+        $pdf->SetFillColor(255, 255, 255);
+
+        // set color for text
+        $pdf->SetTextColor(0, 0, 0);
+
         // write the second column
-        $pdf->writeHTMLCell(80, '', '', '', $rightColumn, 1, 1, 1, true, 'J', true);
+        $pdf->writeHTMLCell(60, '', '', '', $rightColumn, 0, 1, 1, true, 'J', true);
 
         // reset pointer to the last page
         $pdf->lastPage();
