@@ -46,7 +46,7 @@ if (!empty($this->_colonneDebut) || !empty($this->_colonneMilieu) || !empty($thi
     }
 
     $content .=	'<div class="clear"><hr /></div>';
-	$content .=	'<p>';
+    $content .= '<p>';
     $content .=	'<input type="radio" name="editiontype" value="pdf" id="pdf" /><label for="pdf">PDF</label>';
     $content .=	'<input type="radio" name="editiontype" value="excel" id="excel" /><label for="excel">Excel</label>';
     $content .=	'</p>';
@@ -57,7 +57,7 @@ if (!empty($this->_colonneDebut) || !empty($this->_colonneMilieu) || !empty($thi
     $content .=	'<input type="submit" name="submit" value="Editer">';
     $content .=	'</p>';
 
- } else {
+} else {
 
     $content .= '<p>Il n\'y a aucun mot correspondant à vos critères de recherche</p>';
 }
