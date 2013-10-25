@@ -16,17 +16,17 @@ class IndexController
 
     public function viewsManagement()
     {
-        require_once 'IndexView.class.php';
+        include_once 'IndexView.class.php';
 
         if (!empty($_POST['lettre'])) {
 
-            require_once 'ListView.class.php';
+            include_once 'ListView.class.php';
         }
 
-        require_once 'layout.php';
+        include_once 'layout.php';
     }
 
-    private function setContent()
+    private function _setContent()
     {
         $results = array();
         $this->_cleanLettre = htmlspecialchars($_POST['lettre'], ENT_COMPAT);
@@ -36,36 +36,36 @@ class IndexController
         foreach ($results as $word) {
 
             if (in_array('debut', $_POST['place'])) {
-	
+
                 $pattern = '#^('.$this->_cleanLettre.'[a-z\ \'éèàêûîôïç\-]+) \| ([a-zA-Z0-9è]+)#';
                 if (preg_match($pattern, $word, $matches)) {
-			
+
                     if (in_array($matches[2], $_POST['classe'])) {
-			
+
                         $this->_colonneDebut[] = $matches[1];
                     }
                 }
             } 
-		
+
             if (in_array('milieu', $_POST['place'])) {
 
                 $pattern = '#^([a-zéèàêûîôïç-]+'.$this->_cleanLettre.'[a-zéèàêûîôïç-]+) \| ([a-zA-Z0-9è]+)#';
                 if (preg_match($pattern, $word, $matches)) {
 
                     if (in_array($matches[2], $_POST['classe'])) {
-				
+
                         $this->_colonneMilieu[] = $matches[1];
                     }
                 }
             }
-		
+
             if (in_array('fin', $_POST['place'])) {
 
                 $pattern = '#^([a-zéèàêûîôïç-]+'.$this->_cleanLettre.') \| ([a-zA-Z0-9è]+)#';
                 if (preg_match($pattern, $word, $matches)) {
-			
+
                     if (in_array($matches[2], $_POST['classe'])) {
-                        
+
                         $this->_colonneFin[] = $matches[1];
                     }
                 }
@@ -78,7 +78,7 @@ class IndexController
     {
         if (!empty($_POST['lettre']) && !empty($_POST['place']) && !empty($_POST['classe'])) {
 
-            $this->setContent();
+            $this->_setContent();
         }
     }
 }
