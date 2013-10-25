@@ -40,7 +40,7 @@ $content .= '<input type="checkbox" name="place[]" value="fin" id="fin" ';
 if (isset($_POST['place']))
     if (in_array('fin', $_POST['place']))
         $content .= 'checked="checked"';
-		
+
 $content .= ' />';
 $content .= '<label for="fin">Fin du mot</label>';
 $content .= '</p>';
@@ -124,7 +124,7 @@ $content .= '<input type="checkbox" name="classe[]" id="2nd" value="2nd" ';
 if (isset($_POST['classe']))
     if (in_array('2nd', $_POST['classe']))
         $content .= 'checked="checked"';
-		
+
 $content .= '><label for="2nd">2nd</label>';
 
 $content .= '</p>';
