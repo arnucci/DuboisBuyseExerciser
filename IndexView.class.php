@@ -13,7 +13,7 @@ $content .= '</p>';
 $content .= '<p><a href="#" id="select">Tout sélectionner</a> - <a href="#" id="unselect">Tous déselectionner</a></p>';
 
 $content .= '<p>';
-$content .= '<input type="checkbox" name="place[]" value="debut" id="debut" ';
+$content .= '<input type="checkbox" name="place[]" value="debut" id="debut" class="checkplace" ';
 
 if (isset($_POST['place']))
     if (in_array('debut', $_POST['place']))
@@ -24,7 +24,7 @@ $content .= '<label for="debut">Début du mot</label>';
 $content .= '</p>';
 
 $content .= '<p>';
-$content .= '<input type="checkbox" name="place[]" value="milieu" id="milieu" ';
+$content .= '<input type="checkbox" name="place[]" value="milieu" id="milieu" class ="checkplace" ';
 
 if (isset($_POST['place']))
     if (in_array('milieu', $_POST['place']))
@@ -35,7 +35,7 @@ $content .= '<label for="milieu">Milieu du mot</label>';
 $content .= '</p>';
 
 $content .= '<p>';
-$content .= '<input type="checkbox" name="place[]" value="fin" id="fin" ';
+$content .= '<input type="checkbox" name="place[]" value="fin" id="fin" class="checkplace" ';
 
 if (isset($_POST['place']))
     if (in_array('fin', $_POST['place']))

@@ -1,20 +1,15 @@
 $('#select').click(function() {
 
-    placecheckbox = $('input:checkbox[name="place[]"]');
-
-    placecheckbox.each(function() {
-
-        $(this).attr('checked', 'checked');
+    $('.checkplace').each(function() {
+        $(this).prop('checked', 'checked');
     });
 });
 
 $('#unselect').click(function() {
 
-    placecheckbox = $('input:checkbox[name="place[]"]');
+    $('.checkplace').each(function() {
 
-    placecheckbox.each(function() {
-
-        $(this).attr('checked', false);
+        $(this).prop('checked', false);
     });
 });
 
