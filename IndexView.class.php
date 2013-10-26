@@ -45,9 +45,11 @@ $content .= ' />';
 $content .= '<label for="fin">Fin du mot</label>';
 $content .= '</p>';
 
+$content .= '<p><a href="#" id="selectcl">Tout sélectionner</a> - <a href="#" id="unselectcl">Tous déselectionner</a></p>';
+
 $content .= '<p>';
 $content .= 'Classe';
-$content .= '<input type="checkbox" name="classe[]" id="cp" value="CP" ';
+$content .= '<input type="checkbox" name="classe[]" id="cp" value="CP" class="checkclasse" ';
 
 if (isset($_POST['classe']))
     if (in_array('CP', $_POST['classe']))
@@ -55,7 +57,7 @@ if (isset($_POST['classe']))
 
 $content .= '><label for="cp">CP</label>';
 
-$content .=  '<input type="checkbox" name="classe[]" id="ce1" value="CE1" ';
+$content .=  '<input type="checkbox" name="classe[]" id="ce1" value="CE1" class="checkclasse" ';
 
 if (isset($_POST['classe']))
     if (in_array('CE1', $_POST['classe']))
@@ -63,7 +65,7 @@ if (isset($_POST['classe']))
 
 $content .= '><label for="ce1">CE1</label>';
 
-$content .= '<input type="checkbox" name="classe[]" id="ce2" value="CE2" ';
+$content .= '<input type="checkbox" name="classe[]" id="ce2" value="CE2" class="checkclasse" ';
 
 if (isset($_POST['classe']))
     if (in_array('CE2', $_POST['classe']))
@@ -71,7 +73,7 @@ if (isset($_POST['classe']))
 
 $content .='><label for="ce2">CE2</label>';
 
-$content .= '<input type="checkbox" name="classe[]" id="cm1" value="CM1" ';
+$content .= '<input type="checkbox" name="classe[]" id="cm1" value="CM1" class="checkclasse" ';
 
 if (isset($_POST['classe']))
     if (in_array('CM1', $_POST['classe']))
@@ -79,7 +81,7 @@ if (isset($_POST['classe']))
 
 $content .= '><label for="cm1">CM1</label>';
 
-$content .= '<input type="checkbox" name="classe[]" id="cm2" value="CM2" ';
+$content .= '<input type="checkbox" name="classe[]" id="cm2" value="CM2" class="checkclasse" ';
 
 if (isset($_POST['classe']))
     if (in_array('CM2', $_POST['classe']))
@@ -87,7 +89,7 @@ if (isset($_POST['classe']))
 
 $content .= '><label for="cm2">CM2</label>';
 
-$content .= '<input type="checkbox" name="classe[]" id="6eme" value="6ème" ';
+$content .= '<input type="checkbox" name="classe[]" id="6eme" value="6ème" class="checkclasse" ';
 
 if (isset($_POST['classe']))
     if (in_array('6ème', $_POST['classe']))
@@ -95,7 +97,7 @@ if (isset($_POST['classe']))
 
 $content .= '><label for="6eme">6ème</label>';
 
-$content .= '<input type="checkbox" name="classe[]" id="5eme" value="5ème" ';
+$content .= '<input type="checkbox" name="classe[]" id="5eme" value="5ème" class="checkclasse" ';
 
 if (isset($_POST['classe']))
     if (in_array('5ème', $_POST['classe']))
@@ -103,7 +105,7 @@ if (isset($_POST['classe']))
 
 $content .= '><label for="5eme">5ème</label>';
 
-$content .= '<input type="checkbox" name="classe[]" id="4eme" value="4ème" ';
+$content .= '<input type="checkbox" name="classe[]" id="4eme" value="4ème" class="checkclasse" ';
 
 if (isset($_POST['classe']))
     if (in_array('4ème', $_POST['classe']))
@@ -111,7 +113,7 @@ if (isset($_POST['classe']))
 
 $content .= '><label for="4eme">4ème</label>';
 
-$content .= '<input type="checkbox" name="classe[]" id="3eme" value="3ème"';
+$content .= '<input type="checkbox" name="classe[]" id="3eme" value="3ème" class="checkclasse" ';
 
 if (isset($_POST['classe']))
     if (in_array('3ème', $_POST['classe']))
@@ -119,7 +121,7 @@ if (isset($_POST['classe']))
 
 $content .= '><label for="3eme">3ème</label>';
 
-$content .= '<input type="checkbox" name="classe[]" id="2nd" value="2nd" ';
+$content .= '<input type="checkbox" name="classe[]" id="2nd" value="2nd" class="checkclasse" ';
 
 if (isset($_POST['classe']))
     if (in_array('2nd', $_POST['classe']))

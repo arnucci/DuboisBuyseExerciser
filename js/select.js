@@ -13,3 +13,18 @@ $('#unselect').click(function() {
     });
 });
 
+$('#selectcl').click(function() {
+
+    $('.checkclasse').each(function() {
+        $(this).prop('checked', 'checked');
+    });
+});
+
+$('#unselectcl').click(function() {
+
+    $('.checkclasse').each(function() {
+
+        $(this).prop('checked', false);
+    });
+});
+
