@@ -1,5 +1,7 @@
 <?php
-$content  = '<form action="index.php" method="post">';
+$content = '<h1>Générateur de liste de mots</h1>';
+
+$content .= '<form action="index.php" method="post">';
 $content .= '<p>';
 $content .= 'Suite de lettres recherchées';
 $content .= '<input type="text" name="lettre" ';
