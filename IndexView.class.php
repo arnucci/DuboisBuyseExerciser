@@ -1,6 +1,14 @@
 <?php
 $content = '<h1>Générateur de liste de mots</h1>';
 
+if ($errors !== '') {
+
+    foreach ($errors as $error) {
+
+       $content .= $error.'<br />'; 
+    }
+}
+
 $content .= '<form action="index.php" method="post">';
 $content .= '<p>';
 $content .= 'Suite de lettres recherchées';
