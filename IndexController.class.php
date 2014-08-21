@@ -79,6 +79,10 @@ class IndexController
         if (!empty($_POST['lettre']) && !empty($_POST['place']) && !empty($_POST['classe'])) {
 
             $this->_setContent();
+
+        } else {
+
+            echo 'Formulaire incomplet';
         }
     }
 }
