@@ -51,6 +51,11 @@ if (!empty($this->_colonneDebut) || !empty($this->_colonneMilieu) || !empty($thi
     $content .=	'<input type="radio" name="editiontype" value="excel" id="excel" /><label for="excel">Excel</label>';
     $content .=	'</p>';
 
+    $content .= '<p>';
+    $content .= '<label for="fileName">Nom du fichier pdf</label>';
+    $content .= '<input type="text" name="filename" id="fileName" value="exemple.pdf" />';
+    $content .= '</p>';
+
     $content .=	'<div class="clear"><hr /></div>';
     $content .= '<p>';
     $content .= '<input type="hidden" name="lettre" value="'.$this->_cleanLettre.'" />';
