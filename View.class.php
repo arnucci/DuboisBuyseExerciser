@@ -27,8 +27,8 @@ class View
         if ($script === null || !is_array($script)) {
             $this->_script = '';
         } else {
-            foreach ($script as $file => $type) {
-                $this->_script .= '<script type="'.$type.'" src="script/'.$file.'" ></script>'."\n\t\t";
+            foreach ($script as $file) {
+                $this->_script .= '<script type="text/javascript" src="js/'.$file.'" ></script>'."\n\t\t";
             }
         }
     }

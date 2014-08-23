@@ -1,4 +1,7 @@
 <?php
+require_once 'IndexView.class.php';
+//require_once 'ListView.class.php';
+
 
 class IndexController
 {
@@ -16,14 +19,15 @@ class IndexController
 
     public function viewsManagement()
     {
-        include_once 'IndexView.class.php';
+        $indexView = new IndexView();
+        $indexView->display();
 
-        if (!empty($_POST['lettre'])) {
+        // if (!empty($_POST['lettre'])) {
 
-            include_once 'ListView.class.php';
-        }
-
-        include_once 'layout.php';
+        //     $listView = new ListView();
+        //     $listView->display();
+        // }
+        //        include_once 'layout.php';
     }
 
     private function _setContent()

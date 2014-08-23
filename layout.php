@@ -7,8 +7,8 @@
 	</head>
 	<body>
 
-          <?php echo $content; ?>
-          <script src="js/jquery.js" type="text/javascript"></script>
-     <?php echo $script; ?>
+          <?php echo $this->_content; ?>
+          <script type="text/javascript"src="js/jquery.js"></script>
+     <?php echo $this->_script; ?>
 	</body>
 </html>
