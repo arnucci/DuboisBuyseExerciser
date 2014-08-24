@@ -6,8 +6,20 @@ class IndexView extends View
 {
     private $_content;
 
-    function __construct()
+    private $_letter;
+
+    private $_colonneDebut;
+
+    private $_colonneMilieu;
+
+    private $_colonneFin;
+
+    function __construct($letter, $colonneDebut, $colonneMilieu, $colonneFin)
     {
+        $this->_letter        = $letter;
+        $this->_colonneDebut  = $colonneDebut;
+        $this->_colonneMilieu = $colonneMilieu;
+        $this->_colonneFin    = $colonneFin;
     }
 
     function displayLayout()
@@ -165,6 +177,75 @@ class IndexView extends View
         $this->_content .= '</p>';
 
         $this->_content .= '</form>';
+
+        if (!empty($this->_colonneDebut) || !empty($this->_colonneMilieu) || !empty($this->_colonneFin)) {
+
+            $this->_content .= '<form action="index.php?action=edit" method="post">';
+
+            if (!empty($this->_colonneDebut)) {
+
+                $this->_content .= '<div id="colonneDebut">';
+
+                $this->_content .= '<h3>Mots commençant par "'.$this->_letter.'"</h3>';
+
+                foreach ($this->_colonneDebut as $mot) {
+
+                    $this->_content .= '<input type="checkbox" checked="checked" name="debut[]" value="'.$mot.'" id="debut_'.$mot.'" /><label for="debut_'.$mot.'">'.$mot.'</label><br />';
+                }
+
+                $this->_content .= '</div>';
+            }
+
+            if (!empty($this->_colonneMilieu)) {
+
+                $this->_content .= '<div id="colonneMilieu">';
+
+                $this->_content .= '<h3>Mots contenant "'.$this->_letter.'"</h3>';
+
+                foreach ($this->_colonneMilieu as $mot) {
+
+                    $this->_content .= '<input type="checkbox" checked="checked" name="milieu[]" value="'.$mot.'" id="milieu_'.$mot.'" /><label for="milieu_'.$mot.'">'.$mot.'</label><br />';
+                }
+
+                $this->_content .= '</div>';
+            }
+
+            if (!empty($this->_colonneFin)) {
+
+                $this->_content .= '<div id="colonneFin">';
+
+                $this->_content .= '<h3>Mots finissant par "'.$this->_letter.'"</h3>';
+
+                foreach ($this->_colonneFin as $mot) {
+
+                    $this->_content .= '<input type="checkbox" checked="checked" name="fin[]" value="'.$mot.'" id="fin_'.$mot.'" /><label for="fin_'.$mot.'">'.$mot.'</label><br />';
+                }
+
+                $this->_content .= '</div>';
+            }
+
+            $this->_content .= '<div class="clear"><hr /></div>';
+            $this->_content .= '<p>';
+            $this->_content .= '<input type="radio" name="editiontype" value="pdf" id="pdf" /><label for="pdf">PDF</label>';
+            $this->_content .= '<input type="radio" name="editiontype" value="excel" id="excel" /><label for="excel">Excel</label>';
+            $this->_content .= '</p>';
+
+            $this->_content .= '<p>';
+            $this->_content .= '<label for="fileName">Nom du fichier pdf</label>';
+            $this->_content .= '<input type="text" name="filename" id="fileName" value="exemple.pdf" />';
+            $this->_content .= '</p>';
+
+            $this->_content .= '<div class="clear"><hr /></div>';
+            $this->_content .= '<p>';
+            $this->_content .= '<input type="hidden" name="lettre" value="'.$this->_letter.'" />';
+            $this->_content .= '<input type="submit" name="submit" value="Editer">';
+            $this->_content .= '</p>';
+
+        } else {
+
+            $this->_content .= '<p>Il n\'y a aucun mot correspondant à vos critères de recherche</p>';
+        }
+
 
         return $this->_content;
     }
