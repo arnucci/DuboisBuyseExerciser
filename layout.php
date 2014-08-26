@@ -6,9 +6,8 @@
 		<link rel="stylesheet" href="dubois.css" media="all">
 	</head>
 	<body>
-
-          <?php echo $this->_content; ?>
+          <?php echo $content; ?>
           <script type="text/javascript"src="js/jquery.js"></script>
-     <?php echo $this->_script; ?>
+          <script type="text/javascript"src="js/select.js"></script>
 	</body>
 </html>
