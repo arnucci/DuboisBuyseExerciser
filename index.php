@@ -1,8 +1,8 @@
 <?php
 
-$content = '';
+$errors = array();
 
-$content = '<h1>Générateur de liste de mots</h1>';
+$content = '';
 
 $content .= '<form action="index.php" method="post">';
 $content .= '<p>';
@@ -255,11 +255,11 @@ if (isset($_POST['submit'])) {
 
         } else {
 
-            $content .= '<p>Il n\'y a aucun mot correspondant à vos critères de recherche</p>';
+            $errors[] = 'Il n\'y a aucun mot correspondant à vos critères de recherche.';
         }
 
     } else {
-        $content .= 'Le formulaire est incomplet.';
+        $errors[] = 'Le formulaire est incomplet.';
     }
  }
 
