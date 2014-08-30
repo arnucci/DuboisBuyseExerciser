@@ -142,123 +142,125 @@ $content .= '</p>';
 
 $content .= '</form>';
 
+if (isset($_POST['submit'])) {
 
- if ($_POST['lettre'] !== '' && !empty($_POST['place']) && !empty($_POST['classe'])) {
+    if ($_POST['lettre'] !== '' && !empty($_POST['place']) && !empty($_POST['classe'])) {
 
-     $results = array();
-     $cleanLettre = htmlspecialchars($_POST['lettre'], ENT_COMPAT);
+        $results = array();
+        $cleanLettre = htmlspecialchars($_POST['lettre'], ENT_COMPAT);
 
-     $results = file('words.txt');
+        $results = file('words.txt');
 
-     foreach ($results as $word) {
+        foreach ($results as $word) {
 
-         if (in_array('debut', $_POST['place'])) {
+            if (in_array('debut', $_POST['place'])) {
 
-             $pattern = '#^('.$cleanLettre.'[a-z\ \'éèàêûîôïç\-]+) \| ([a-zA-Z0-9è]+)#';
-             if (preg_match($pattern, $word, $matches)) {
+                $pattern = '#^('.$cleanLettre.'[a-z\ \'éèàêûîôïç\-]+) \| ([a-zA-Z0-9è]+)#';
+                if (preg_match($pattern, $word, $matches)) {
 
-                 if (in_array($matches[2], $_POST['classe'])) {
+                    if (in_array($matches[2], $_POST['classe'])) {
 
-                     $colonneDebut[] = $matches[1];
-                 }
-             }
-         } 
+                        $colonneDebut[] = $matches[1];
+                    }
+                }
+            } 
 
-         if (in_array('milieu', $_POST['place'])) {
+            if (in_array('milieu', $_POST['place'])) {
 
-             $pattern = '#^([a-zéèàêûîôïç-]+'.$cleanLettre.'[a-zéèàêûîôïç-]+) \| ([a-zA-Z0-9è]+)#';
-             if (preg_match($pattern, $word, $matches)) {
+                $pattern = '#^([a-zéèàêûîôïç-]+'.$cleanLettre.'[a-zéèàêûîôïç-]+) \| ([a-zA-Z0-9è]+)#';
+                if (preg_match($pattern, $word, $matches)) {
 
-                 if (in_array($matches[2], $_POST['classe'])) {
+                    if (in_array($matches[2], $_POST['classe'])) {
 
-                     $colonneMilieu[] = $matches[1];
-                 }
-             }
-         }
+                        $colonneMilieu[] = $matches[1];
+                    }
+                }
+            }
 
-         if (in_array('fin', $_POST['place'])) {
+            if (in_array('fin', $_POST['place'])) {
 
-             $pattern = '#^([a-zéèàêûîôïç-]+'.$cleanLettre.') \| ([a-zA-Z0-9è]+)#';
-             if (preg_match($pattern, $word, $matches)) {
+                $pattern = '#^([a-zéèàêûîôïç-]+'.$cleanLettre.') \| ([a-zA-Z0-9è]+)#';
+                if (preg_match($pattern, $word, $matches)) {
 
-                 if (in_array($matches[2], $_POST['classe'])) {
+                    if (in_array($matches[2], $_POST['classe'])) {
 
-                     $colonneFin[] = $matches[1];
-                 }
-             }
-         }
-     }
-
-
- }
-
-
-if (!empty($colonneDebut) || !empty($colonneMilieu) || !empty($colonneFin)) {
-
-    $content .= '<form action="index.php?action=edit" method="post">';
-
-    if (!empty($colonneDebut)) {
-
-        $content .= '<div id="colonneDebut">';
-
-        $content .= '<h3>Mots commençant par "'.$cleanLettre.'"</h3>';
-
-        foreach ($colonneDebut as $mot) {
-
-            $content .= '<input type="checkbox" checked="checked" name="debut[]" value="'.$mot.'" id="debut_'.$mot.'" /><label for="debut_'.$mot.'">'.$mot.'</label><br />';
+                        $colonneFin[] = $matches[1];
+                    }
+                }
+            }
         }
 
-        $content .= '</div>';
-    }
+        if (!empty($colonneDebut) || !empty($colonneMilieu) || !empty($colonneFin)) {
 
-    if (!empty($colonneMilieu)) {
+            $content .= '<form action="index.php?action=edit" method="post">';
 
-        $content .= '<div id="colonneMilieu">';
+            if (!empty($colonneDebut)) {
 
-        $content .= '<h3>Mots contenant "'.$cleanLettre.'"</h3>';
+                $content .= '<div id="colonneDebut">';
 
-        foreach ($colonneMilieu as $mot) {
+                $content .= '<h3>Mots commençant par "'.$cleanLettre.'"</h3>';
 
-            $content .= '<input type="checkbox" checked="checked" name="milieu[]" value="'.$mot.'" id="milieu_'.$mot.'" /><label for="milieu_'.$mot.'">'.$mot.'</label><br />';
+                foreach ($colonneDebut as $mot) {
+
+                    $content .= '<input type="checkbox" checked="checked" name="debut[]" value="'.$mot.'" id="debut_'.$mot.'" /><label for="debut_'.$mot.'">'.$mot.'</label><br />';
+                }
+
+                $content .= '</div>';
+            }
+
+            if (!empty($colonneMilieu)) {
+
+                $content .= '<div id="colonneMilieu">';
+
+                $content .= '<h3>Mots contenant "'.$cleanLettre.'"</h3>';
+
+                foreach ($colonneMilieu as $mot) {
+
+                    $content .= '<input type="checkbox" checked="checked" name="milieu[]" value="'.$mot.'" id="milieu_'.$mot.'" /><label for="milieu_'.$mot.'">'.$mot.'</label><br />';
+                }
+
+                $content .= '</div>';
+            }
+
+            if (!empty($colonneFin)) {
+
+                $content .= '<div id="colonneFin">';
+
+                $content .= '<h3>Mots finissant par "'.$cleanLettre.'"</h3>';
+
+                foreach ($colonneFin as $mot) {
+
+                    $content .= '<input type="checkbox" checked="checked" name="fin[]" value="'.$mot.'" id="fin_'.$mot.'" /><label for="fin_'.$mot.'">'.$mot.'</label><br />';
+                }
+
+                $content .= '</div>';
+            }
+
+            $content .= '<div class="clear"><hr /></div>';
+            $content .= '<p>';
+            $content .= '<input type="radio" name="editiontype" value="pdf" id="pdf" /><label for="pdf">PDF</label>';
+            $content .= '<input type="radio" name="editiontype" value="excel" id="excel" /><label for="excel">Excel</label>';
+            $content .= '</p>';
+    
+            $content .= '<p>';
+            $content .= '<label for="fileName">Nom du fichier pdf</label>';
+            $content .= '<input type="text" name="filename" id="fileName" value="exemple.pdf" />';
+            $content .= '</p>';
+
+            $content .= '<div class="clear"><hr /></div>';
+            $content .= '<p>';
+            $content .= '<input type="hidden" name="lettre" value="'.$cleanLettre.'" />';
+            $content .= '<input type="submit" name="submit" value="Editer">';
+            $content .= '</p>';
+
+        } else {
+
+            $content .= '<p>Il n\'y a aucun mot correspondant à vos critères de recherche</p>';
         }
 
-        $content .= '</div>';
+    } else {
+        $content .= 'Le formulaire est incomplet.';
     }
-
-    if (!empty($colonneFin)) {
-
-        $content .= '<div id="colonneFin">';
-
-        $content .= '<h3>Mots finissant par "'.$cleanLettre.'"</h3>';
-
-        foreach ($colonneFin as $mot) {
-
-            $content .= '<input type="checkbox" checked="checked" name="fin[]" value="'.$mot.'" id="fin_'.$mot.'" /><label for="fin_'.$mot.'">'.$mot.'</label><br />';
-        }
-
-        $content .= '</div>';
-    }
-
-    $content .= '<div class="clear"><hr /></div>';
-    $content .= '<p>';
-    $content .= '<input type="radio" name="editiontype" value="pdf" id="pdf" /><label for="pdf">PDF</label>';
-    $content .= '<input type="radio" name="editiontype" value="excel" id="excel" /><label for="excel">Excel</label>';
-    $content .= '</p>';
-
-    $content .= '<p>';
-    $content .= '<label for="fileName">Nom du fichier pdf</label>';
-    $content .= '<input type="text" name="filename" id="fileName" value="exemple.pdf" />';
-    $content .= '</p>';
-
-    $content .= '<div class="clear"><hr /></div>';
-    $content .= '<p>';
-    $content .= '<input type="hidden" name="lettre" value="'.$cleanLettre.'" />';
-    $content .= '<input type="submit" name="submit" value="Editer">';
-    $content .= '</p>';
-
- } else {
-
-    $content .= '<p>Il n\'y a aucun mot correspondant à vos critères de recherche</p>';
  }
 
 
