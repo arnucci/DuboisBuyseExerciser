@@ -19,5 +19,6 @@
           <?php echo $content; ?>
           <script type="text/javascript"src="js/jquery.js"></script>
           <script type="text/javascript"src="js/select.js"></script>
+          <script type="text/javascript"src="js/displayfilename.js"></script>
      </body>
 </html>

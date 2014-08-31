@@ -237,12 +237,13 @@ if (isset($_POST['submit'])) {
             }
 
             $content .= '<div class="clear"><hr /></div>';
-            $content .= '<p>';
+
+            $content .= '<p id="edittype">';
             $content .= '<input type="radio" name="editiontype" value="pdf" id="pdf" /><label for="pdf">PDF</label>';
             $content .= '<input type="radio" name="editiontype" value="excel" id="excel" /><label for="excel">Excel</label>';
             $content .= '</p>';
     
-            $content .= '<p>';
+            $content .= '<p id="pfiletype">';
             $content .= '<label for="fileName">Nom du fichier pdf</label>';
             $content .= '<input type="text" name="filename" id="fileName" value="exemple.pdf" />';
             $content .= '</p>';

@@ -1,11 +1,15 @@
 #colonneDebut, #colonneMilieu, #colonneFin {
-	float:left;
+    float:left;
 }
 
 .clear {
-	clear:both;
+    clear:both;
 }
 
 .clear hr {
-	display:none;
+    display:none;
+}
+
+#pfiletype {
+    display:none;
 }
