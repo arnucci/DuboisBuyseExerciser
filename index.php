@@ -244,7 +244,7 @@ if (isset($_POST['submit'])) {
             $content .= '</p>';
     
             $content .= '<p id="pfiletype">';
-            $content .= '<label for="fileName">Nom du fichier pdf</label>';
+            $content .= '<label for="fileName">Nom du fichier </label>';
             $content .= '<input type="text" name="filename" id="fileName" value="exemple.pdf" />';
             $content .= '</p>';
 
